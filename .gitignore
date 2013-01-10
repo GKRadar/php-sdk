@@ -4,3 +4,9 @@
 .project
 
 .settings/org.eclipse.php.core.prefs
+
+.settings/com.zend.php.formatter.core.prefs
+
+.settings/com.zend.php.formatter.ui.prefs
+
+.settings/org.eclipse.php.ui.prefs
