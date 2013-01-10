@@ -22,13 +22,22 @@ To use the SDK,
    * Make sure that the SDK folder in your project is available in PHP's include path.
    * Include the GKRadar.php file in your code.
 	
-For example,
+Create our Application instance (replace this with your App ID and secret):
 
 	require_once("GKRadar.php");
 	
-	$api = new GKRadar(array(
+	$application = new GKRadar(array(
 		"appID" => "<YOUR APPLICATION ID>",
 		"secret => "<YOUR APPLICATION SECRET>"
 	));
+	
+Contributing
+------------
+
+When commiting, keep all lines to less than 80 characters, and try to follow the existing style.
+
+Before creating a pull request, squash your commits into a single commit.
+
+Add the comments where needed, and provide ample explanation in the commit message.
 
 Please, go to [http://www.giftkoeder-radar.com/](http://www.giftkoeder-radar.com/) for more documentation and further information.
