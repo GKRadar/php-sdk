@@ -58,7 +58,7 @@ class GKRadar {
      * @param array $config The Application Settings
      */
     public function __construct($config) {
-
+        
         if (!isset($config["appID"]) || !is_string($config["appID"])) {
             throw new GKRadarApiException("GKRadar API needs a Application ID");
         }
@@ -104,7 +104,6 @@ class GKRadar {
      * @param array $data
      */
     public function post($path, array $params = array()) {
-
         return $this->fetch($path, $params, "post");
     }
 
@@ -116,8 +115,8 @@ class GKRadar {
      * @param string $method
      */
     public function fetch($path, array $params = array(), $method = "get") {
-
-        $url = $this->_apiBaseUrl . $path;
+        
+        $url = $this->_apiBaseUrl . trim($path, "/");
         $ch = curl_init();
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

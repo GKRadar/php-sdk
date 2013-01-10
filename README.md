@@ -31,7 +31,7 @@ Create our Application instance (replace this with your App ID and secret):
 		"secret" => "<YOUR APPLICATION SECRET>"
 	));
 	
-Return a collection of the latest 20 locations
+API-Call: /locations - Return a collection of the latest 20 locations
 
 	try {
 	
