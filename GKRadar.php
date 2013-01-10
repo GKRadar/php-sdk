@@ -34,7 +34,7 @@ class GKRadar {
      * API Endpoint
      * @var string
      */
-    protected $_apiBaseUrl = "http://www.giftkoeder-radar.com/v2/";
+    protected $_apiBaseUrl = "https://www.giftkoeder-radar.com/v2/";
     
     /**
      * The Application ID
@@ -119,6 +119,8 @@ class GKRadar {
         $url = $this->_apiBaseUrl . trim($path, "/");
         $ch = curl_init();
         
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Expect:"));
