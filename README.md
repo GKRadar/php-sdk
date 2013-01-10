@@ -21,7 +21,7 @@ To use the SDK,
    * Copy SDK files into your project.
    * Make sure that the SDK folder in your project is available in PHP's include path.
    * Include the GKRadar.php file in your code.
-   * [http://www.giftkoeder-radar.com](Register your application}
+   * [http://www.giftkoeder-radar.com](Register your application)
 	
 Create our Application instance (replace this with your App ID and secret):
 
