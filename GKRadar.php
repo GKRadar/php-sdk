@@ -31,6 +31,12 @@ class GKRadar {
     const VERSION = "1.0.0";
     
     /**
+     * API Endpoint
+     * @var string
+     */
+    protected $_apiBaseUrl = "http://www.giftkoeder-radar.com/v2/";
+    
+    /**
      * The Application ID
      * @var string
      */
@@ -52,6 +58,15 @@ class GKRadar {
      * @param array $config The Application Settings
      */
     public function __construct($config) {
+        
+        if (!isset($config["appID"]) || !is_string($config["appID"])) {
+            throw new GKRadarApiException("GKRadar API needs a Application ID");
+        }
+        
+        if (!isset($config["secret"]) || !is_string($config["secret"])) {
+            throw new GKRadarApiException("GKRadar API needs a Application Secret");
+        }
+        
         $this->setAppID($config["appID"]);
         $this->setAppSecret($config["secret"]);
     }
@@ -70,5 +85,70 @@ class GKRadar {
      */
     public function setAppSecret($secret) {
         $this->_appSecret = $secret;
+    }
+    
+    /**
+     * Make an API call via. HTTP GET
+     * 
+     * @param string $path
+     * @param array $data
+     */
+    public function get($path, array $params = array()) {
+        return $this->fetch($path, $params, "get");
+    }
+    
+	/**
+     * Make an API call via. HTTP POSZ
+     * 
+     * @param string $path
+     * @param array $data
+     */
+    public function post($path, array $params = array()) {
+        return $this->fetch($path, $params, "post");
+    }
+    
+    /**
+     * Make an API call
+     * 
+     * @param string $path
+     * @param array $params
+     * @param string $method
+     */
+    public function fetch($path, array $params = array(), $method = "get") {
+        $url = $this->_apiBaseUrl . $path;
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Expect:"));
+        curl_setopt($ch, CURLOPT_USERAGENT, "GKRadar PHP SDK");
+        
+        if ($method == "post" || $method == "delete") {
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+        
+        } elseif ($method == "get") {
+            
+            if (count($params) > 0) {
+              $url .= "?" . http_build_query($params);
+            }
+            
+            curl_setopt($ch, CURLOPT_URL, $url);
+        }
+
+        $data = curl_exec($ch);
+        if (curl_errno($ch)) {
+			throw new GKRadarApiException("Server error: " . curl_error($ch));
+		}
+
+		curl_close($ch);
+        $data = json_decode($data, true);
+        
+        if (isset($data["error"])) {
+            throw new GKRadarApiException($data["error"]["message"], $data["error"]["code"]);
+        }
+		
+		return $data;
     }
 }

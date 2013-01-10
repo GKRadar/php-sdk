@@ -28,8 +28,20 @@ Create our Application instance (replace this with your App ID and secret):
 	
 	$application = new GKRadar(array(
 		"appID" => "<YOUR APPLICATION ID>",
-		"secret => "<YOUR APPLICATION SECRET>"
+		"secret" => "<YOUR APPLICATION SECRET>"
 	));
+	
+Return a collection of the latest 20 locations
+
+	try {
+	
+    	$response = $application->get("locations");
+	
+	} catch (GKRadarApiException $e) {
+    	die($e->getMessage());
+	}
+	
+	var_dump($response);
 	
 Contributing
 ------------
@@ -40,4 +52,4 @@ Before creating a pull request, squash your commits into a single commit.
 
 Add the comments where needed, and provide ample explanation in the commit message.
 
-Please, go to [http://www.giftkoeder-radar.com/](http://www.giftkoeder-radar.com/) for more documentation and further information.
+Please, go to [http://www.giftkoeder-radar.com](http://www.giftkoeder-radar.com) for more documentation and further information.
