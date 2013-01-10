@@ -18,9 +18,9 @@ Using the SDK
 
 To use the SDK,
 
-	* Copy SDK files into your project.
-	* Make sure that the SDK folder in your project is available in PHP's include path.
-	* Include the GKRadar.php file in your code.
+   * Copy SDK files into your project.
+   * Make sure that the SDK folder in your project is available in PHP's include path.
+   * Include the GKRadar.php file in your code.
 	
 For example,
 
