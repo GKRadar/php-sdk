@@ -42,7 +42,13 @@ Return a collection of the latest 20 locations
     	die($e->getMessage());
 	}
 	
-	var_dump($response);
+	// Loop through response array to get single location
+	if (count($response)) {
+    	foreach($response as $location) {
+        	echo $location["title"] . PHP_EOL;
+        	echo " - " . $location["permalink"] . PHP_EOL . PHP_EOL;
+    	}
+	}
 	
 Return a collection of the latest 5 locations
 
