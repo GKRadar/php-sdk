@@ -98,7 +98,7 @@ class GKRadar {
     }
 
     /**
-     * Make an API call via. HTTP POSZ
+     * Make an API call via. HTTP POST
      * 
      * @param string $path
      * @param array $data
@@ -115,6 +115,9 @@ class GKRadar {
      * @param string $method
      */
     public function fetch($path, array $params = array(), $method = "get") {
+        
+        $credentials = array("appID" => $this->_appID, "secret" => $this->_appSecret);
+        $params = array_merge($credentials, $params);
         
         $url = $this->_apiBaseUrl . trim($path, "/");
         $ch = curl_init();

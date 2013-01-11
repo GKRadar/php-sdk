@@ -1,18 +1,37 @@
 <?php
 
-require_once("GKRadar.php");
+require_once ("GKRadar.php");
 
 // Create our Application instance (replace this with your App ID and secret)
 $application = new GKRadar(array(
-	"appID" => "YOUR APPLICATION ID",
-	"secret" => "YOUR APPLICATION SECRET"
+	"appID" => "<YOUR APPLICATION ID>", "secret" => "<YOUR APPLICATION SECRET>"
 ));
 
 // Return a collection of the latest locations
 try {
-	
+    
     $response = $application->get("locations");
-	
+
+} catch (GKRadarApiException $e) {
+    die($e->getMessage());
+}
+
+// Return a collection of the latest 5 locations
+try {
+    
+    $params = array("limit" => 5);
+    $response = $application->get("locations", $params);
+
+} catch (GKRadarApiException $e) {
+    die($e->getMessage());
+}
+
+// Return a collection of the latest locations by given position & distance
+try {
+    
+    $params = array("lat" => "52.554490", "lng" => "13.398299", "distance" => 10);
+    $response = $application->get("locations", $params);
+
 } catch (GKRadarApiException $e) {
     die($e->getMessage());
 }

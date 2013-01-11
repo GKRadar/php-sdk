@@ -23,7 +23,7 @@ To use the SDK,
    * Include the GKRadar.php file in your code.
    * [Register your application](http://www.giftkoeder-radar.com)
 	
-Create our Application instance (replace this with your App ID and secret):
+Create our Application instance (replace this with your Application ID and secret):
 
 	require_once("GKRadar.php");
 	
@@ -32,12 +32,38 @@ Create our Application instance (replace this with your App ID and secret):
 		"secret" => "<YOUR APPLICATION SECRET>"
 	));
 	
-API-Call: /locations - Return a collection of the latest 20 locations
+Return a collection of the latest 20 locations
 
 	try {
 	
     	$response = $application->get("locations");
 	
+	} catch (GKRadarApiException $e) {
+    	die($e->getMessage());
+	}
+	
+	var_dump($response);
+	
+Return a collection of the latest 5 locations
+
+	try {
+    
+    	$params = array("limit" => 5);
+    	$response = $application->get("locations", $params);
+
+	} catch (GKRadarApiException $e) {
+    	die($e->getMessage());
+	}
+	
+	var_dump($response);
+
+Return a collection of the latest locations by given position & distance
+
+	try {
+    
+    	$params = array("lat" => "52.554490", "lng" => "13.398299", "distance" => 10);
+    	$response = $application->get("locations", $params);
+
 	} catch (GKRadarApiException $e) {
     	die($e->getMessage());
 	}
