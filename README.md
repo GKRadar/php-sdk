@@ -70,6 +70,8 @@ Return a collection of the latest locations by given position & distance
 	
 	var_dump($response);
 	
+Please, go to [http://www.giftkoeder-radar.com](http://www.giftkoeder-radar.com) for more documentation and further information.
+	
 Contributing
 ------------
 
@@ -78,5 +80,3 @@ When commiting, keep all lines to less than 80 characters, and try to follow the
 Before creating a pull request, squash your commits into a single commit.
 
 Add the comments where needed, and provide ample explanation in the commit message.
-
-Please, go to [http://www.giftkoeder-radar.com](http://www.giftkoeder-radar.com) for more documentation and further information.
