@@ -72,11 +72,27 @@ class GKRadar {
     }
 
     /**
+     * Get the Application ID
+     * @return string $appID
+     */
+    public function getAppID() {
+        return $this->_appID;
+    }
+
+    /**
      * Set the Application ID
      * @param string $appID
      */
     public function setAppID($appID) {
         $this->_appID = $appID;
+    }
+
+    /**
+     * Get the Application Secret
+     * @return string $secret
+     */
+    public function getAppSecret() {
+        return $this->_appSecret;
     }
 
     /**
@@ -94,7 +110,7 @@ class GKRadar {
      * @param array $data
      */
     public function get($path, array $params = array()) {
-        return $this->fetch($path, $params, "get");
+        return $this->_fetch($path, $params, "get");
     }
 
     /**
@@ -104,7 +120,7 @@ class GKRadar {
      * @param array $data
      */
     public function post($path, array $params = array()) {
-        return $this->fetch($path, $params, "post");
+        return $this->_fetch($path, $params, "post");
     }
 
     /**
@@ -114,7 +130,7 @@ class GKRadar {
      * @param array $params
      * @param string $method
      */
-    public function fetch($path, array $params = array(), $method = "get") {
+    protected function _fetch($path, array $params = array(), $method = "get") {
         
         $credentials = array("appID" => $this->_appID, "secret" => $this->_appSecret);
         $params = array_merge($credentials, $params);
