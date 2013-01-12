@@ -32,7 +32,8 @@ Create our Application instance (replace this with your Application ID and secre
 		"secret" => "<YOUR APPLICATION SECRET>"
 	));
 	
-Return a collection of the latest 20 locations
+API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations)
+Return a collection of the latest 10 locations
 
 	try {
 	
@@ -50,6 +51,7 @@ Return a collection of the latest 20 locations
     	}
 	}
 	
+API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations)
 Return a collection of the latest 5 locations
 
 	try {
@@ -63,20 +65,27 @@ Return a collection of the latest 5 locations
 	
 	var_dump($response);
 
+API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations)
 Return a collection of the latest locations by given position & distance
 
 	try {
     
-    	$params = array("lat" => "52.554490", "lng" => "13.398299", "distance" => 10);
+    	$params = array("geocode" => "52.554490,13.398299,25");
     	$response = $application->get("locations", $params);
 
 	} catch (GKRadarApiException $e) {
     	die($e->getMessage());
 	}
+
+	if (count($response)) {
+   		foreach($response as $location) {
+        	echo $location["title"] . PHP_EOL;
+        	echo " - ca. " . round($location["distance"], 2) . " km" . PHP_EOL;
+        	echo " - " . $location["permalink"] . PHP_EOL . PHP_EOL;
+    	}
+	}
 	
-	var_dump($response);
-	
-Please, go to [http://www.giftkoeder-radar.com](http://www.giftkoeder-radar.com) for more documentation and further information.
+Please, go to [http://www.giftkoeder-radar.com/doc/api/v2.0](http://www.giftkoeder-radar.com/doc/api/v2.0) for more documentation and further information.
 	
 Contributing
 ------------

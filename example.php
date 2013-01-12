@@ -35,9 +35,17 @@ try {
 // Return a collection of the latest locations by given position & distance
 try {
     
-    $params = array("lat" => "52.554490", "lng" => "13.398299", "distance" => 10);
+    $params = array("geocode" => "52.554490,13.398299,25");
     $response = $application->get("locations", $params);
 
 } catch (GKRadarApiException $e) {
     die($e->getMessage());
+}
+
+if (count($response)) {
+    foreach($response as $location) {
+        echo $location["title"] . PHP_EOL;
+        echo " - ca. " . round($location["distance"], 2) . " km" . PHP_EOL;
+        echo " - " . $location["permalink"] . PHP_EOL . PHP_EOL;
+    }
 }
