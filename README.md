@@ -32,8 +32,7 @@ Create our Application instance (replace this with your Application ID and secre
 		"secret" => "<YOUR APPLICATION SECRET>"
 	));
 	
-API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations)
-Return a collection of the latest 10 locations
+API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations) - Return a collection of the latest 10 locations
 
 	try {
 	
@@ -51,8 +50,7 @@ Return a collection of the latest 10 locations
     	}
 	}
 	
-API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations)
-Return a collection of the latest 5 locations
+API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations) - Return a collection of the latest 5 locations
 
 	try {
     
@@ -65,8 +63,7 @@ Return a collection of the latest 5 locations
 	
 	var_dump($response);
 
-API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations)
-Return a collection of the latest locations by given position & distance
+API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/locations) - Return a collection of the latest locations by given position & distance
 
 	try {
     
