@@ -36,7 +36,7 @@ API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/loca
 
 	try {
 	
-    	$response = $application->get("locations");
+    	$response = $application->getLocations();
 	
 	} catch (GKRadarApiException $e) {
     	die($e->getMessage());
@@ -55,7 +55,7 @@ API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/loca
 	try {
     
     	$params = array("limit" => 5);
-    	$response = $application->get("locations", $params);
+    	$response = $application->getLocations($params);
 
 	} catch (GKRadarApiException $e) {
     	die($e->getMessage());
@@ -68,7 +68,7 @@ API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/loca
 	try {
     
     	$params = array("geocode" => "52.554490,13.398299,25", "since" => 30);
-    	$response = $application->get("locations", $params);
+    	$response = $application->getLocations($params);
 
 	} catch (GKRadarApiException $e) {
     	die($e->getMessage());

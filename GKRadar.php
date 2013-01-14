@@ -124,6 +124,16 @@ class GKRadar {
     }
 
     /**
+     * Return a collection of the latest locations
+     * 
+     * @param array $params
+     * @return array
+     */
+    public function getLocations(array $params = array()) {
+        return $this->_fetch("locations", $params, "get");
+    }
+    
+    /**
      * Creates a new location via. HTTP POST
      * 
      * @param array $params

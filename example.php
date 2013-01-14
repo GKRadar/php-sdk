@@ -12,7 +12,7 @@ $application = new GKRadar(array(
 // Return a collection of the latest locations
 try {
     
-    $response = $application->get("locations");
+    $response = $application->getLocations();
 
 } catch (GKRadarApiException $e) {
     die($e->getMessage());
@@ -29,7 +29,7 @@ if (count($response)) {
 try {
     
     $params = array("limit" => 5);
-    $response = $application->get("locations", $params);
+    $response = $application->getLocations($params);
 
 } catch (GKRadarApiException $e) {
     die($e->getMessage());
@@ -39,7 +39,7 @@ try {
 try {
     
     $params = array("geocode" => "52.554490,13.398299,25");
-    $response = $application->get("locations", $params);
+    $response = $application->getLocations($params);
 
 } catch (GKRadarApiException $e) {
     die($e->getMessage());
