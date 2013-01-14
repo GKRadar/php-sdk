@@ -122,7 +122,17 @@ class GKRadar {
     public function post($path, array $params = array()) {
         return $this->_fetch($path, $params, "post");
     }
-    
+
+    /**
+     * Creates a new location via. HTTP POST
+     * 
+     * @param array $params
+     * @return array
+     */
+    public function createLocation(array $params = array()) {
+        return $this->_fetch("locations/new", $params, "post");
+    }
+
     /**
      * Make an API call
      * 

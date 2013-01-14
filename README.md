@@ -82,6 +82,29 @@ API Resource: [/locations](http://www.giftkoeder-radar.com/doc/api/v2.0/get/loca
     	}
 	}
 	
+API Resource: [/locations/new](http://www.giftkoeder-radar.com/doc/api/v2.0/post/locations/new) - Create a new location
+
+	try {
+    
+    	$params = array(
+        	"title" 	=> "Giftköder unter dem Baum", 
+        	"country" 	=> "DE", 
+        	"street" 	=> "Ernst-Wagner-Weg 36", 
+        	"zipcode" 	=> "12309", 
+        	"city" 		=> "Berlin", 
+        	"firstname" => "Marc", 
+        	"lastname" 	=> "Huber", 
+        	"email" 	=> "huber@domain.de"
+    	);
+    
+    	$response = $application->createLocation($params);
+
+	} catch (GKRadarApiException $e) {
+    	die($e->getMessage());
+	}
+
+	var_dump($response);
+	
 Please, go to [http://www.giftkoeder-radar.com/doc/api/v2.0](http://www.giftkoeder-radar.com/doc/api/v2.0) for more documentation and further information.
 	
 Contributing

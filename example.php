@@ -4,7 +4,10 @@ header("Content-Type: text/plain; charset=utf-8");
 require_once ("GKRadar.php");
 
 // Create our Application instance (replace this with your App ID and secret)
-$application = new GKRadar(array("appID" => "<YOUR APPLICATION ID>", "secret" => "<YOUR APPLICATION SECRET>"));
+$application = new GKRadar(array(
+    "appID" => "<YOUR APPLICATION ID>", 
+    "secret" => "<YOUR APPLICATION SECRET>"
+));
 
 // Return a collection of the latest locations
 try {
@@ -49,3 +52,25 @@ if (count($response)) {
         echo " - " . $location["permalink"] . PHP_EOL . PHP_EOL;
     }
 }
+
+// Create a new location
+try {
+    
+    $params = array(
+        "title" => "Giftköder unter dem Baum", 
+        "country" => "DE", 
+        "street" => "Ernst-Wagner-Weg 36", 
+        "zipcode" => "12309", 
+        "city" => "Berlin", 
+        "firstname" => "Marc", 
+        "lastname" => "Huber", 
+        "email" => "huber@domain.de"
+    );
+    
+    $response = $application->createLocation($params);
+
+} catch (GKRadarApiException $e) {
+    die($e->getMessage());
+}
+
+var_dump($response);
