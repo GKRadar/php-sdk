@@ -126,10 +126,12 @@ class GKRadar {
     /**
      * Return a single breed
      * 
-     * @param array $params
+     * @param integer $breedID
      * @return array
      */
-    public function getBreed(array $params = array()) {
+    public function getBreed($breedID = null) {
+        $params = array("id" => $breedID);
+        
         return $this->_fetch("breeds/show", $params, "get");
     }
 
@@ -155,10 +157,12 @@ class GKRadar {
     /**
      * Return a single location
      * 
-     * @param array $params
+     * @param integer $locationID
      * @return array
      */
-    public function getLocation(array $params = array()) {
+    public function getLocation($locationID = null) {
+        $params = array("id" => $locationID);
+        
         return $this->_fetch("locations/show", $params, "get");
     }
 
@@ -191,9 +195,7 @@ class GKRadar {
      */
     protected function _fetch($path, array $params = array(), $method = "get") {
         
-        $credentials = array(
-            "appID" => $this->_appID, 
-            "secret" => $this->_appSecret);
+        $credentials = array("appID" => $this->_appID, "secret" => $this->_appSecret);
         $params = array_merge($credentials, $params);
         
         $url = $this->_apiBaseUrl . trim($path, "/");
