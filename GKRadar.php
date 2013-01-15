@@ -28,7 +28,7 @@ class GKRadar {
      * Version
      * @var string 
      */
-    const VERSION = "1.0.0";
+    const VERSION = "1.0.1";
     
     /**
      * API Endpoint
@@ -123,6 +123,45 @@ class GKRadar {
         return $this->_fetch($path, $params, "post");
     }
 
+	/**
+     * Return a single breed
+     * 
+     * @param array $params
+     * @return array
+     */
+    public function getBreed(array $params = array()) {
+        return $this->_fetch("breeds/show", $params, "get");
+    }
+    
+	/**
+     * Return a collection of breeds
+     * 
+     * @return array
+     */
+    public function getBreeds() {
+        return $this->_fetch("breeds", $params, "get");
+    }
+    
+	/**
+     * Creates a new breed via. HTTP POST
+     * 
+     * @param array $params
+     * @return array
+     */
+    public function createBreed(array $params = array()) {
+        return $this->_fetch("breeds/new", $params, "post");
+    }
+    
+	/**
+     * Return a single location
+     * 
+     * @param array $params
+     * @return array
+     */
+    public function getLocation(array $params = array()) {
+        return $this->_fetch("locations/show", $params, "get");
+    }
+    
     /**
      * Return a collection of the latest locations
      * 
