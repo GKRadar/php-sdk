@@ -123,7 +123,7 @@ class GKRadar {
         return $this->_fetch($path, $params, "post");
     }
 
-	/**
+    /**
      * Return a single breed
      * 
      * @param array $params
@@ -132,8 +132,8 @@ class GKRadar {
     public function getBreed(array $params = array()) {
         return $this->_fetch("breeds/show", $params, "get");
     }
-    
-	/**
+
+    /**
      * Return a collection of breeds
      * 
      * @return array
@@ -141,8 +141,8 @@ class GKRadar {
     public function getBreeds() {
         return $this->_fetch("breeds", $params, "get");
     }
-    
-	/**
+
+    /**
      * Creates a new breed via. HTTP POST
      * 
      * @param array $params
@@ -151,8 +151,8 @@ class GKRadar {
     public function createBreed(array $params = array()) {
         return $this->_fetch("breeds/new", $params, "post");
     }
-    
-	/**
+
+    /**
      * Return a single location
      * 
      * @param array $params
@@ -161,7 +161,7 @@ class GKRadar {
     public function getLocation(array $params = array()) {
         return $this->_fetch("locations/show", $params, "get");
     }
-    
+
     /**
      * Return a collection of the latest locations
      * 
@@ -171,7 +171,7 @@ class GKRadar {
     public function getLocations(array $params = array()) {
         return $this->_fetch("locations", $params, "get");
     }
-    
+
     /**
      * Creates a new location via. HTTP POST
      * 
@@ -191,7 +191,9 @@ class GKRadar {
      */
     protected function _fetch($path, array $params = array(), $method = "get") {
         
-        $credentials = array("appID" => $this->_appID, "secret" => $this->_appSecret);
+        $credentials = array(
+            "appID" => $this->_appID, 
+            "secret" => $this->_appSecret);
         $params = array_merge($credentials, $params);
         
         $url = $this->_apiBaseUrl . trim($path, "/");
