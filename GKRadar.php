@@ -216,7 +216,7 @@ class GKRadar {
         } elseif ($method == "get") {
             
             if (count($params) > 0) {
-                $url .= "?" . http_build_query($params);
+                $url .= "?" . http_build_query($params, "", "&");
             }
             
             curl_setopt($ch, CURLOPT_URL, $url);
